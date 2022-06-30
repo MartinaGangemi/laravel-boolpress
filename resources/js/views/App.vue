@@ -30,8 +30,6 @@
       </header>
         
 
-      <!-- route outlet -->
-      <!-- component matched by the route will render here -->
       <main>
          <router-view></router-view>
       </main>

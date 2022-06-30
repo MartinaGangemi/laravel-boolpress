@@ -63,3 +63,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 # laravel-one-to-many
 # laravel-many-to-many
 # laravel-api
+# laravel-boolpress

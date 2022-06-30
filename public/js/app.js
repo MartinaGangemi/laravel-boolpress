@@ -5140,28 +5140,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_AsideComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/AsideComponent.vue */ "./resources/js/components/AsideComponent.vue");
-/* harmony import */ var _components_CardsComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/CardsComponent.vue */ "./resources/js/components/CardsComponent.vue");
-/* harmony import */ var _components_WelcomeContent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/WelcomeContent.vue */ "./resources/js/components/WelcomeContent.vue");
 //
 //
 //
 //
-//
-//
-//
-//
-//
-//
-
-
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    AsideComponent: _components_AsideComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    WelcomeContent: _components_WelcomeContent_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    CardsComponent: _components_CardsComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
   name: 'Post'
 });
 
@@ -5395,8 +5378,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -42450,19 +42431,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "row m-0" },
-    [
-      _vm._v("\r\n  ciao\r\n  "),
-      _c("welcome-content"),
-      _vm._v(" "),
-      _c("cards-component"),
-      _vm._v(" "),
-      _c("aside-component"),
-    ],
-    1
-  )
+  return _c("h1", [_vm._v("post")])
 }
 var staticRenderFns = []
 render._withStripped = true
