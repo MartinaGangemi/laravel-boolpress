@@ -7,8 +7,9 @@
                   <div class="product card">
                   <img :src="'storage/' + post.img" :alt="post.title">
                   <div class="card-body">
-                     <h4>{{post.title}}</h4>
-                     <p>{{post.content}}</p>
+                     <h5>{{post.title}}</h5>
+                     <p>{{trimText(post.content)}}</p>
+                     <router-link :to="{name: 'post', params: { slug:post.slug } }">Read More</router-link>
                   </div>
                   <div class="card-footer">
                      <div class="author" v-if="post.user">
@@ -30,6 +31,7 @@
             </div>
          </div>
 
+         <!-- numero pagine -->
          <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center  mt-5">
                <li class="page-item" v-if="postsResponse.current_page > 1">
@@ -69,6 +71,7 @@ export default {
           params : {
             page: postPage
           }
+          
         })
         
       .then((response)=>{
@@ -80,12 +83,18 @@ export default {
       })
       },
 
+      trimText(text){
+        if(text.length >50 ){
+         return text.slice(0,50) + '...'
+        }
+        return text;
+      }
+
       
    },
 
    mounted(){
-     this.getAllPosts(1)
-     
+     this.getAllPosts(1);
    }
 }
 </script>

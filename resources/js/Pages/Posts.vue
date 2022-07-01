@@ -1,6 +1,5 @@
 <template>
 <div class="row m-0">
-  <welcome-content/>
   <cards-component />
   <aside-component />
   
@@ -10,9 +9,9 @@
 <script>
 import AsideComponent from '../components/AsideComponent.vue'
 import CardsComponent from '../components/CardsComponent.vue'
-import WelcomeContent from '../components/WelcomeContent.vue'
+
 export default {
-  components: { AsideComponent, WelcomeContent, CardsComponent },
+  components: { AsideComponent, CardsComponent },
     name:'Post'
 }
 </script>

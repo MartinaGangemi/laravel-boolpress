@@ -3,30 +3,28 @@
     <div>
         
       <header>
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-      <div class="container">
-            <router-link class="navbar-brand" :to="{ name: 'home' }">
-               BoolPress
-            </router-link>
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-               data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-               aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-            </button>
+         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+         <div class="container">
+               <router-link class="navbar-brand" :to="{ name: 'home' }">
+                  BoolPress
+               </router-link>
+               <button class="navbar-toggler" type="button" data-toggle="collapse"
+                  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                  aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+               </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               <!-- Left Side Of Navbar -->
-               <ul class="navbar-nav mr-auto">
-                  <li class="nav-item" v-for="item in menu_items" :key="item.id">
-                        <router-link class="nav-link" :to="{ name: item.route_name }">{{ item.route_text }}
-                        </router-link>
-                  </li>
-               </ul>
-               <!-- Right Side Of Navbar -->
-               <ul class="navbar-nav ms-auto"> </ul>
-            </div>
-      </div>
-   </nav>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <!-- Left Side Of Navbar -->
+                  <ul class="navbar-nav mr-auto">
+                     <li class="nav-item" v-for="item in menu_items" :key="item.id">
+                           <router-link class="nav-link" :to="{ name: item.route_name }">{{ item.route_text }}
+                           </router-link>
+                     </li>
+                  </ul>
+               </div>
+         </div>
+         </nav>
       </header>
         
 
@@ -62,7 +60,12 @@ export default {
                 {
                     route_name: 'posts',
                     route_text: 'Blog'
+                },
+                {
+                    route_name: 'contacts',
+                    route_text: 'Contact'
                 }
+                
             ]
         }
     }

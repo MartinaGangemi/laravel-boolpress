@@ -1,10 +1,39 @@
 <template>
-  <h1>post</h1>
+  <div class="container my-5">
+    <h1>{{post.title}}</h1>
+    <h5>{{post.user.name}}</h5>
+    <div>
+      <strong>Categoria: </strong>{{post.category.name}}
+    </div>
+    <img :src="'/storage/' + post.img" alt="">
+    <p class="mt-4">{{post.content}}</p>
+
+    <div v-if="post.tags.length > 0">
+      <span v-for="tag in post.tags" :key="tag.id">
+        #{{tag.name}}
+      </span>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name:'Post'
+    name:'Post',
+    data(){
+      return{
+        post:'',
+      }
+    },
+    mounted(){
+      axios.get('/api/posts/'+ this.$route.params.slug)
+      .then(response =>{
+        //console.log(response.data)
+        this.post= response.data
+      })
+      .catch(e => {
+      console.error(e);
+      })
+    }
 }
 </script>
 

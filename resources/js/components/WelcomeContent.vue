@@ -11,5 +11,7 @@
 
 export default {
     name:'WelcomeContent'
+
+    
 }
 </script>
