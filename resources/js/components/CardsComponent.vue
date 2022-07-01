@@ -2,9 +2,9 @@
     <section class ="post col-10">
       <div class="container">
          <div class="row g-5 mt-5">
-            <div class="col-3" v-for="post in postsResponse.data" :key="post.id">
+            <div class="col-4" v-for="post in postsResponse.data" :key="post.id">
                   <!-- card -->
-                  <div class="product card">
+                  <div class="post-card card">
                   <div class="profilo d-flex align-items-center">
                      <div class="avatar m-2">
                         <img :src="post.user.avatar" alt="">
@@ -16,23 +16,24 @@
 
                   <div class="post-img">
                      <img :src="'storage/' + post.img" :alt="post.title">
+                     <div class="title px-2 py-1">
+                        <h5>{{post.title}}</h5>
+                     </div>
                   </div>
                   
                   <div class="card-body">
-                     <h5>{{post.title}}</h5>
                      <p>{{trimText(post.content)}}</p>
                      <router-link :to="{name: 'post', params: { slug:post.slug } }">Read More</router-link>
                   </div>
-                  <div class="card-footer">
+                  <div class="card_footer p-3">
                      
                      <span v-if="post.category"><strong>Cartegory:</strong> {{post.category.name}}</span>
                      <div class="tags" v-if="post.tags.length > 0"> 
                         <strong>Tags:</strong>
                         
-                              <span v-for="tag in post.tags" :key="tag.id">
-                              #{{tag.name}}
-                              </span>
-                        
+                           <span v-for="tag in post.tags" :key="tag.id">
+                           #{{tag.name}}
+                           </span>
                      </div>
                   </div>
                   </div>
@@ -114,8 +115,26 @@ export default {
         height: 100%;
         object-fit: cover;
       }
-    .card{
+    .post-card{
       height: 500px;
+      width: 100%;
+
+      .post-img{
+        height: 200px;
+        margin: 1rem;
+        position: relative;
+      }
+
+      .title{
+        position: absolute;
+        bottom: -10px;
+        right: -10px;
+        background-color: #F79A92;
+        h5{
+            margin: 0;
+            color: white;
+        }
+      }
       
 
       .avatar{
@@ -126,11 +145,8 @@ export default {
           border-radius: 50%;
         }
       }
-      .post-img{
-         height: 150px;
-      }
+     
 
-      
    }
  
 </style>

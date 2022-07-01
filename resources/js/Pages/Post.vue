@@ -3,7 +3,10 @@
     <h1>{{post.title}}</h1>
     <h5>{{post.user.name}}</h5>
     <div>
-      <strong>Categoria: </strong>{{post.category.name}}
+      <div v-if="post.category">
+        <strong >Categoria: </strong>{{post.category.name}}
+      </div>
+      
     </div>
     <img :src="'/storage/' + post.img" alt="">
     <p class="mt-4">{{post.content}}</p>

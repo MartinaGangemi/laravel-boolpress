@@ -1,16 +1,22 @@
 <template>
-    <div>
+    <div class="home">
         <welcome-content/>
         <div class="recent_articles my-5">
             <div class="container">
                 <h2>Articoli recenti</h2>
-                <div class="row g-5 ">
-                    <div class="col-3" v-for="post in posts" :key="post.id">
+                <div class="row g-5 mt-1">
+                    <div class="col-4" v-for="post in posts" :key="post.id">
                         <!-- card -->
-                        <div class="product card">
-                            <img :src="'storage/' + post.img" :alt="post.title">
+                        <div class="post-card card">
+                            <div class="post-img">
+                                <img :src="'storage/' + post.img" :alt="post.title">
+                                <div class="title px-2 py-1">
+                                    <h5>{{post.title}}</h5>
+                                </div>
+                            </div>
+                            
                             <div class="card-body">
-                                <h5>{{post.title}}</h5>
+                                
                                 <p>{{trimText(post.content)}}</p>
                                  <router-link :to="{name: 'post', params: { slug:post.slug } }">Read More</router-link>
                             </div>
@@ -54,7 +60,7 @@ export default {
         .then(response => {
             console.log(response.data);
             const posts = response.data.data
-            this.posts = posts.slice(0, 8)
+            this.posts = posts.slice(0, 6)
         })
         .catch(e => {
             console.error(e)
@@ -67,12 +73,38 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
    
-    .card{
-      height: 320px;
-      img{
-        height: 150px;
-         object-fit: cover;
+
+  
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    
+
+    .post-card{
+      height: 350px;
+      width: 100%;
+      
+      
+    .post-img{
+        height: 200px;
+        margin: 1rem;
+        position: relative;
+      }
+
+      .title{
+        position: absolute;
+        bottom: -10px;
+        right: -10px;
+        background-color: #F79A92;
+        h5{
+            margin: 0;
+            color: white;
+        }
       }
 
       
