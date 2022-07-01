@@ -73,6 +73,9 @@ export default {
 </script>
 
 <style lang="scss">
+main{
+    min-height: calc(100vh - 126px )
+}
 </style>
 
 
