@@ -5,17 +5,26 @@
             <div class="col-3" v-for="post in postsResponse.data" :key="post.id">
                   <!-- card -->
                   <div class="product card">
-                  <img :src="'storage/' + post.img" :alt="post.title">
+                  <div class="profilo d-flex align-items-center">
+                     <div class="avatar m-2">
+                        <img :src="post.user.avatar" alt="">
+                     </div> 
+                     <div class="author" v-if="post.user">
+                        <h5 class="m-0">{{post.user.name}}</h5>
+                     </div>
+                  </div>
+
+                  <div class="post-img">
+                     <img :src="'storage/' + post.img" :alt="post.title">
+                  </div>
+                  
                   <div class="card-body">
                      <h5>{{post.title}}</h5>
                      <p>{{trimText(post.content)}}</p>
                      <router-link :to="{name: 'post', params: { slug:post.slug } }">Read More</router-link>
                   </div>
                   <div class="card-footer">
-                     <div class="author" v-if="post.user">
-                        <strong>Autore:</strong>
-                        {{post.user.name}}
-                     </div>
+                     
                      <span v-if="post.category"><strong>Cartegory:</strong> {{post.category.name}}</span>
                      <div class="tags" v-if="post.tags.length > 0"> 
                         <strong>Tags:</strong>
@@ -75,7 +84,7 @@ export default {
         })
         
       .then((response)=>{
-         console.log(response);
+         console.log(response.data);
          //this.posts=response.data.data
          this.postsResponse=response.data
       }).catch(e =>{
@@ -100,17 +109,28 @@ export default {
 </script>
 
 <style scoped lang="scss">
-   
-    .card{
-      height: 400px;
       img{
-        height: 150px;
-         object-fit: cover;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    .card{
+      height: 500px;
+      
+
+      .avatar{
+         height: 50px;
+         width: 50px;
+
+        img{
+          border-radius: 50%;
+        }
+      }
+      .post-img{
+         height: 150px;
       }
 
-      .card-body{
-         overflow: auto;
-      }
+      
    }
  
 </style>

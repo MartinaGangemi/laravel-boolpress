@@ -5270,7 +5270,15 @@ __webpack_require__.r(__webpack_exports__);
 
     axios.get('/api/posts/' + this.$route.params.slug).then(function (response) {
       //console.log(response.data)
-      _this.post = response.data;
+      if (response.data.status_code === 404) {
+        console.log('aaaa');
+
+        _this.$router.push({
+          name: 'not-found'
+        });
+      } else {
+        _this.post = response.data;
+      }
     })["catch"](function (e) {
       console.error(e);
     });
@@ -5440,6 +5448,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CardsComponent',
   data: function data() {
@@ -5457,7 +5474,7 @@ __webpack_require__.r(__webpack_exports__);
           page: postPage
         }
       }).then(function (response) {
-        console.log(response); //this.posts=response.data.data
+        console.log(response.data); //this.posts=response.data.data
 
         _this.postsResponse = response.data;
       })["catch"](function (e) {
@@ -10674,7 +10691,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card[data-v-54096305] {\n  height: 400px;\n}\n.card img[data-v-54096305] {\n  height: 150px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.card .card-body[data-v-54096305] {\n  overflow: auto;\n}", ""]);
+exports.push([module.i, "img[data-v-54096305] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.card[data-v-54096305] {\n  height: 500px;\n}\n.card .avatar[data-v-54096305] {\n  height: 50px;\n  width: 50px;\n}\n.card .avatar img[data-v-54096305] {\n  border-radius: 50%;\n}\n.card .post-img[data-v-54096305] {\n  height: 150px;\n}", ""]);
 
 // exports
 
@@ -42924,9 +42941,25 @@ var render = function () {
         _vm._l(_vm.postsResponse.data, function (post) {
           return _c("div", { key: post.id, staticClass: "col-3" }, [
             _c("div", { staticClass: "product card" }, [
-              _c("img", {
-                attrs: { src: "storage/" + post.img, alt: post.title },
-              }),
+              _c("div", { staticClass: "profilo d-flex align-items-center" }, [
+                _c("div", { staticClass: "avatar m-2" }, [
+                  _c("img", { attrs: { src: post.user.avatar, alt: "" } }),
+                ]),
+                _vm._v(" "),
+                post.user
+                  ? _c("div", { staticClass: "author" }, [
+                      _c("h5", { staticClass: "m-0" }, [
+                        _vm._v(_vm._s(post.user.name)),
+                      ]),
+                    ])
+                  : _vm._e(),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "post-img" }, [
+                _c("img", {
+                  attrs: { src: "storage/" + post.img, alt: post.title },
+                }),
+              ]),
               _vm._v(" "),
               _c(
                 "div",
@@ -42950,17 +42983,6 @@ var render = function () {
               ),
               _vm._v(" "),
               _c("div", { staticClass: "card-footer" }, [
-                post.user
-                  ? _c("div", { staticClass: "author" }, [
-                      _c("strong", [_vm._v("Autore:")]),
-                      _vm._v(
-                        "\n                     " +
-                          _vm._s(post.user.name) +
-                          "\n                  "
-                      ),
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
                 post.category
                   ? _c("span", [
                       _c("strong", [_vm._v("Cartegory:")]),
@@ -59435,7 +59457,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pages_About__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pages/About */ "./resources/js/Pages/About.vue");
 /* harmony import */ var _Pages_Posts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/Posts */ "./resources/js/Pages/Posts.vue");
 /* harmony import */ var _Pages_Post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pages/Post */ "./resources/js/Pages/Post.vue");
-/* harmony import */ var _Pages_Contacts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Pages/Contacts */ "./resources/js/Pages/Contacts.vue");
+/* harmony import */ var _Pages_Contacts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Pages/Contacts */ "./resources/js/Pages/Contacts.vue");
 /* harmony import */ var _Pages_NotFound__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Pages/NotFound */ "./resources/js/Pages/NotFound.vue");
 
 
@@ -59462,7 +59484,7 @@ var routes = [{
 }, {
   path: '/contacts',
   name: 'contacts',
-  component: _Pages_Contacts__WEBPACK_IMPORTED_MODULE_4__["default"]
+  component: _Pages_Contacts__WEBPACK_IMPORTED_MODULE_6__["default"]
 }, {
   path: '/*',
   name: 'not-found',
